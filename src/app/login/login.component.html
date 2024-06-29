@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+    <h2 >Login</h2>
+    <div class="input-field">
+      <input type="email" required formControlName="email">
+      <label>Enter your email</label>
+    </div>
+    @if (loginform.controls['email'].errors?.['required']) {
+      <div class="alert" style="color: rgb(245, 247, 245);">This is a required field</div>
+    }@else if(loginform.controls['email'].errors?.['minlength']){
+      <div style="color: rgb(243, 245, 243);">Minimum 4 letters required</div>
+    }
+    <div class="input-field">
+      <input type="password" required formControlName="password">
+      <label>Enter your password</label>
+    </div>
+    @if (loginform.controls['password'].errors?.['required']) {
+      <div class="alert" style="color: rgb(245, 247, 245);">This is a required field</div>
+    }@else if(loginform.controls['password'].errors?.['minlength']){
+      <div style="color: rgb(243, 245, 243);">Minimum 4 letters required</div>
+    }
+    <div class="forget">
+      <label for="remember">
+        <input type="checkbox" id="remember">
+        <span>Remember me</span>
+      </label>
+      <a href="">Forgot password?</a>
+    </div>
+    <button type="submit">Log In</button>
+    <div class="register">
+      <p>Don't have an account? <a>SignUp</a></p>
+    </div>
+  </form>
+</div>
